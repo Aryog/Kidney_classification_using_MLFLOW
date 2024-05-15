@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: kidneyClassifier
+Version: 0.0.0
+Summary: A small python package for CNN app
+Home-page: https://github.com/Aryog/Kidney_classification_using_MLFLOW
+Author: Aryog
+Author-email: yogesharyal2525@gmail.com
+Description-Content-Type: text/markdown

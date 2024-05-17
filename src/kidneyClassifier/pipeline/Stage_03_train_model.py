@@ -1,26 +1,26 @@
 from kidneyClassifier.config.configuration import ConfigurationManager
 from kidneyClassifier import logger
-from kidneyClassifier.components.prepare_base_model import PrepareBaseModel
+from kidneyClassifier.components.train_model import Training
 
+STAGE_NAME = "Model Training Stage"
 
-STAGE_NAME = "Base Model Preparation Stage"
-
-class PrepareBaseModelTrainingPipeline:
+class TrainingPipeline:
     def __init__(self) -> None:
         pass
 
     def main(self):
             config = ConfigurationManager()
-            prepare_base_model_config = config.get_prepare_base_model_config()
-            prepare_base_model = PrepareBaseModel(config=prepare_base_model_config)
-            prepare_base_model.get_base_model()
-            prepare_base_model.update_base_model()
+            training_config = config.get_training_config()
+            training = Training(config = training_config)
+            training.get_base_model()
+            training.train_valid_generator()
+            training.train()
        
 if __name__ == '__main__':
     try:
         logger.info(f'******************')
         logger.info(f'>>>>> Stage {STAGE_NAME} started <<<<<')
-        prepare_base_model = PrepareBaseModelTrainingPipeline()
+        prepare_base_model = TrainingPipeline()
         prepare_base_model.main()
         logger.info(f'>>>>> Stage {STAGE_NAME} completed <<<<<\n\n x==========x')
     except Exception as e:
